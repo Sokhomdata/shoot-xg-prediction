@@ -12,4 +12,4 @@ SELECT
     pass_end_x AS x_target,
     pass_end_y AS y_target,
     possession
-FROM {{ ref('stg_events') }}
+FROM {{ ref('stg_competitions') }} c
