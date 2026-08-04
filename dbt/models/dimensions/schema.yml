@@ -1,0 +1,190 @@
+version: 2
+models:
+
+  - name: dim_players
+    description: "Dimension des joueurs."
+
+    columns:
+      - name: player_id
+        description: "Identifiant unique du joueur."
+        tests:
+          - not_null
+          - unique
+
+      - name: last_name_first_name
+        description: "Nom complet du joueur."
+
+      - name: current_position_id
+        description: "Identifiant du poste actuel du joueur."
+
+  - name: dim_teams
+    description: "Dimension des équipes."
+
+    columns:
+      - name: team_id
+        description: "Identifiant unique de l'équipe."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nom de l'équipe."
+
+      - name: country
+        description: "Pays de l'équipe."
+
+  - name: dim_matches
+    description: "Dimension des matchs."
+
+    columns:
+      - name: match_id
+        description: "Identifiant unique du match."
+        tests:
+          - not_null
+          - unique
+
+      - name: competition_id
+        description: "Identifiant de la compétition."
+
+      - name: match_date
+        description: "Date du match."
+
+      - name: kick_off
+        description: "Heure du coup d'envoi."
+
+      - name: home_team_id
+        description: "Identifiant de l'équipe à domicile."
+
+      - name: away_team_id
+        description: "Identifiant de l'équipe à l'extérieur."
+
+      - name: home_score
+        description: "Nombre de buts marqués par l'équipe à domicile."
+
+      - name: away_score
+        description: "Nombre de buts marqués par l'équipe à l'extérieur."
+  
+  - name: dim_competitions
+    description: "Dimension des compétitions."
+
+    columns:
+      - name: competition_id
+        description: "Identifiant de la compétition."
+        tests:
+          - not_null
+
+      - name: season_id
+        description: "Identifiant de la saison."
+
+      - name: competition_name
+        description: "Nom de la compétition."
+
+      - name: country
+        description: "Pays de la compétition."
+
+      - name: competition_gender
+        description: "Catégorie de genre de la compétition."
+
+      - name: competition_youth
+        description: "Indique si la compétition est une compétition de jeunes."
+
+      - name: competition_international
+        description: "Indique si la compétition est internationale."
+
+  - name: dim_seasons
+
+    description: "Dimension des saisons."
+
+    columns:
+      - name: season_id
+        description: "Identifiant unique de la saison."
+        tests:
+          - not_null
+          - unique
+
+      - name: season_name
+        description: "Nom de la saison."
+
+      - name: date_start
+        description: "Date du premier match de la saison."
+
+      - name: date_end
+        description: "Date du dernier match de la saison."  
+
+  - name: dim_bodyparts
+    description: "Dimension des parties du corps utilisées pour effectuer une action."
+
+    columns:
+      - name: body_part_id
+        description: "Identifiant unique de la partie du corps."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nom de la partie du corps."
+
+  - name: dim_shot_type
+    description: "Dimension des types de tir."
+
+    columns:
+      - name: shot_type_id
+        description: "Identifiant unique du type de tir."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nom du type de tir."
+
+  - name: dim_technique
+    description: "Dimension des techniques de frappe."
+
+    columns:
+      - name: technique_id
+        description: "Identifiant unique de la technique de frappe."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nom de la technique de frappe."
+  
+  - name: dim_playpattern
+    description: "Dimension des modèles de jeu (play patterns)."
+
+    columns:
+      - name: play_pattern_id
+        description: "Identifiant unique du modèle de jeu."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nom du modèle de jeu."
+
+  - name: dim_positions
+    description: "Dimension des positions des joueurs."
+
+    columns:
+      - name: current_position_id
+        description: "Identifiant unique de la position."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nom de la position."
+
+  - name: dim_outcome
+    description: "Dimension des résultats des actions et tirs."
+
+    columns:
+      - name: outcome_id
+        description: "Identifiant unique du résultat."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Nom du résultat."
