@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: statsbomb_data
+    description: "Les données brutes de Statsbomb."
+    tables:
+      - name: competitions_raw
+        description: "Table des competitions brute."
+      - name: lineups_raw
+        description: "Table des compositions des matchs brute"
+      - name: matches_test
+        description: "Table des matches brute par saison"
+      - name: events_raw
+        description: "Table de tous les evenements présent dans chaque matchs"
