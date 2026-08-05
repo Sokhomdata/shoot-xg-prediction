@@ -52,7 +52,6 @@ models:
           Angle de tir disponible pour le joueur.
           Un angle élevé correspond généralement à une meilleure opportunité.
 
-
       # ----------------------------------------------------------------------
       # Variables temporelles
       # ----------------------------------------------------------------------
@@ -64,12 +63,6 @@ models:
         description: >
           Période du match.
           1 correspond à la première mi-temps, 2 à la seconde.
-
-      - name: remaining_time
-        description: >
-          Temps restant dans le match au moment du tir.
-          Peut influencer la prise de risque des équipes.
-
 
       # ----------------------------------------------------------------------
       # Variables joueur
@@ -113,7 +106,6 @@ models:
         description: >
           Indique si le joueur frappe le ballon en première intention.
 
-
       # ----------------------------------------------------------------------
       # Variables contexte match
       # ----------------------------------------------------------------------
@@ -128,7 +120,6 @@ models:
         description: >
           Indique si l'équipe du tireur joue à domicile.
           1 = domicile, 0 = extérieur.
-
 
       # ----------------------------------------------------------------------
       # Variable cible Machine Learning
