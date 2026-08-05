@@ -1,5 +1,6 @@
 SELECT
     JSON_VALUE(event_json, '$.id') AS event_id,
+    match_id,
     SAFE_CAST(JSON_VALUE(event_json, '$.index') AS INT64) AS event_index,
     SAFE_CAST(JSON_VALUE(event_json, '$.period') AS INT64) AS period,
     SAFE_CAST(JSON_VALUE(event_json, '$.minute') AS INT64) AS minute,
@@ -41,5 +42,9 @@ SELECT
     JSON_VALUE(event_json, '$.related_events[0]') AS related_event1,
     JSON_VALUE(event_json, '$.related_events[1]') AS related_event2,
     JSON_VALUE(event_json, '$.related_events[2]') AS related_event3,
-    JSON_VALUE(event_json, '$.related_events[3]') AS related_event4
+    JSON_VALUE(event_json, '$.related_events[3]') AS related_event4,
+
+    SAFE_CAST(JSON_VALUE(event_json, '$.shot.statsbomb_xg') AS FLOAT64) AS xg,
+    SAFE_CAST(JSON_VALUE(event_json, '$.under_pressure') AS BOOL) AS under_pressure,
+    SAFE_CAST(JSON_VALUE(event_json, '$.shot.first_time') AS BOOL) AS first_time,
 FROM {{ source('statsbomb_data', 'events_raw') }}

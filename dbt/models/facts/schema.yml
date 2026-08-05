@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: facts_events
+    description: "Table de faits contenant les événements de jeu issus des données StatsBomb."
+    columns:
+      - name: event_id
+        description: "Identifiant unique de l'événement."
+        tests:
+          - not_null
+          - unique
+
+      - name: related_event_id
+        description: "Identifiant d'un événement lié."
+
+      - name: period
+        description: "Période du match."
+
+      - name: minute
+        description: "Minute de l'événement."
+
+      - name: second
+        description: "Seconde de l'événement."
+
+      - name: action_id
+        description: "Identifiant du type d'action."
+
+      - name: play_actor_id
+        description: "Identifiant du joueur réalisant l'action."
+
+      - name: x_actor
+        description: "Coordonnée X du joueur au moment de l'action."
+
+      - name: y_actor
+        description: "Coordonnée Y du joueur au moment de l'action."
+
+      - name: player_target_id
+        description: "Identifiant ou nom du joueur cible de l'action."
+
+      - name: x_target
+        description: "Coordonnée X de la cible de l'action."
+
+      - name: y_target
+        description: "Coordonnée Y de la cible de l'action."
+
+      - name: possession
+        description: "Numéro de la possession."
+
+  - name: facts_shots
+    description: "Table de faits contenant uniquement les tirs effectués pendant les matchs."
+    columns:
+      - name: shot_id
+        description: "Identifiant unique du tir."
+        tests:
+          - unique
+          - not_null
+
+      - name: match_id
+        description: "Identifiant du match."
+
+      - name: striker_id
+        description: "Identifiant du joueur ayant effectué le tir."
+
+      - name: team_id
+        description: "Identifiant de l'équipe du tireur."
+
+      - name: goalkeeper_id
+        description: "Identifiant du gardien adverse."
+
+      - name: event_id
+        description: "Identifiant de l'événement d'origine."
+
+      - name: x
+        description: "Coordonnée X du tir."
+
+      - name: y
+        description: "Coordonnée Y du tir."
+
+      - name: body_part_id
+        description: "Partie du corps utilisée pour le tir."
+
+      - name: xg
+        description: "Expected Goals (xG) associé au tir."
+
+      - name: outcome_id
+        description: "Résultat du tir."
+
+      - name: under_pressure
+        description: "Indique si le tir a été effectué sous pression."
+
+      - name: first_time
+        description: "Indique si le tir est réalisé en première intention."
+
+      - name: shot_type_id
+        description: "Type de tir."
+
+      - name: play_pattern_id
+        description: "Type de phase de jeu."
+
+      - name: technique_id
+        description: "Technique utilisée pour le tir."
