@@ -1,0 +1,140 @@
+version: 2
+
+models:
+  - name: ml_shot_features
+    description: >
+      Table de features destinée à l'entraînement d'un modèle Expected Goals (xG).
+      Chaque ligne représente un tir et contient les variables explicatives
+      permettant de prédire la probabilité qu'un tir devienne un but.
+
+    columns:
+
+      # ----------------------------------------------------------------------
+      # Identifiants techniques
+      # ----------------------------------------------------------------------
+
+      - name: shot_id
+        description: "Identifiant unique du tir issu de StatsBomb."
+        tests:
+          - not_null
+          - unique
+
+      - name: match_id
+        description: "Identifiant du match auquel appartient le tir."
+        tests:
+          - not_null
+
+      - name: event_id
+        description: "Identifiant de l'événement StatsBomb original."
+
+
+      # ----------------------------------------------------------------------
+      # Variables spatiales
+      # ----------------------------------------------------------------------
+
+      - name: x
+        description: >
+          Coordonnée X du tir sur le terrain StatsBomb.
+          Plus la valeur est élevée, plus le joueur est proche du but adverse.
+
+      - name: y
+        description: >
+          Coordonnée Y du tir sur le terrain StatsBomb.
+          Permet d'identifier la position latérale du joueur.
+
+      - name: distance_to_goal
+        description: >
+          Distance entre la position du ballon et le centre du but adverse.
+          Variable fondamentale dans les modèles xG.
+
+      - name: shooting_angle
+        description: >
+          Angle de tir disponible pour le joueur.
+          Un angle élevé correspond généralement à une meilleure opportunité.
+
+
+      # ----------------------------------------------------------------------
+      # Variables temporelles
+      # ----------------------------------------------------------------------
+
+      - name: minute
+        description: "Minute du match au moment du tir."
+
+      - name: period
+        description: >
+          Période du match.
+          1 correspond à la première mi-temps, 2 à la seconde.
+
+      - name: remaining_time
+        description: >
+          Temps restant dans le match au moment du tir.
+          Peut influencer la prise de risque des équipes.
+
+
+      # ----------------------------------------------------------------------
+      # Variables joueur
+      # ----------------------------------------------------------------------
+
+      - name: position_id
+        description: >
+          Position du joueur réalisant le tir.
+          Permet de différencier les profils de joueurs sans utiliser leur identité.
+
+
+      # ----------------------------------------------------------------------
+      # Variables caractéristiques du tir
+      # ----------------------------------------------------------------------
+
+      - name: body_part_id
+        description: >
+          Partie du corps utilisée pour tirer.
+          Exemple : pied, tête.
+
+      - name: technique_id
+        description: >
+          Technique utilisée lors du tir.
+          Exemple : volée, lob, reprise.
+
+      - name: shot_type_id
+        description: >
+          Type de tir.
+          Exemple : penalty, coup franc, jeu ouvert.
+
+      - name: play_pattern_id
+        description: >
+          Phase de jeu ayant conduit au tir.
+          Exemple : attaque placée, contre-attaque, corner.
+
+      - name: under_pressure
+        description: >
+          Indique si le joueur était sous pression défensive au moment du tir.
+
+      - name: first_time
+        description: >
+          Indique si le joueur frappe le ballon en première intention.
+
+
+      # ----------------------------------------------------------------------
+      # Variables contexte match
+      # ----------------------------------------------------------------------
+
+      - name: competition_id
+        description: "Identifiant de la compétition du match."
+
+      - name: season_id
+        description: "Identifiant de la saison du match."
+
+      - name: is_home
+        description: >
+          Indique si l'équipe du tireur joue à domicile.
+          1 = domicile, 0 = extérieur.
+
+
+      # ----------------------------------------------------------------------
+      # Variable cible Machine Learning
+      # ----------------------------------------------------------------------
+
+      - name: goal
+        description: >
+          Variable cible du modèle xG.
+          1 si le tir se termine par un but, 0 sinon.

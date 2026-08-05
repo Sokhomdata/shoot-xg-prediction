@@ -9,7 +9,6 @@ SELECT
     SAFE_CAST(JSON_VALUE(event_json, '$.duration') AS FLOAT64) AS duration,
     SAFE_CAST(JSON_VALUE(event_json, '$.location[0]') AS FLOAT64) AS x,
     SAFE_CAST(JSON_VALUE(event_json, '$.location[1]') AS FLOAT64) AS y,
-    SAFE_CAST(JSON_VALUE(event_json, '$.shot.statsbomb_xg') AS FLOAT64) AS xG,
     SAFE_CAST(JSON_VALUE(event_json, '$.team.id') AS INT64) AS team_id,
     JSON_VALUE(event_json, '$.team.name') AS team_name,
     SAFE_CAST(JSON_VALUE(event_json, '$.player.id') AS INT64) AS player_id,
@@ -46,5 +45,5 @@ SELECT
 
     SAFE_CAST(JSON_VALUE(event_json, '$.shot.statsbomb_xg') AS FLOAT64) AS xg,
     SAFE_CAST(JSON_VALUE(event_json, '$.under_pressure') AS BOOL) AS under_pressure,
-    SAFE_CAST(JSON_VALUE(event_json, '$.shot.first_time') AS BOOL) AS first_time,
+    SAFE_CAST(JSON_VALUE(event_json, '$.shot.first_time') AS BOOL) AS first_time
 FROM {{ source('statsbomb_data', 'events_raw') }}
