@@ -9,6 +9,6 @@ SELECT
     JSON_VALUE(competition_json, '$.match_available_360') AS match_available_360,
     JSON_VALUE(competition_json, '$.match_updated') AS match_updated,
     JSON_VALUE(competition_json, '$.match_updated_360') AS match_updated_360,
-    JSON_VALUE(competition_json, '$.season_id') AS season_id,
+    SAFE_CAST(JSON_VALUE(competition_json, '$.season_id') AS INT64) AS season_id,
     JSON_VALUE(competition_json, '$.season_name') AS season_name
 FROM {{ source('statsbomb_data', 'competitions_raw') }}
