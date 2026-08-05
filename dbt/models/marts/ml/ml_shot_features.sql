@@ -36,7 +36,6 @@ SELECT
         POW(40 - s.y, 2)
     ) AS distance_to_goal,
 
-
     -- Angle de tir
     -- Plus l'angle est grand, plus la fenêtre de tir est ouverte
     ATAN(
@@ -54,21 +53,13 @@ SELECT
     -------------------------------------------------------------------------
     -- Variables temporelles
     -------------------------------------------------------------------------
-
     s.minute,
     s.period,
-
-    CASE
-        WHEN s.period = 1 THEN 45 - s.minute
-        WHEN s.period = 2 THEN 90 - s.minute
-        ELSE NULL
-    END AS remaining_time,
-
 
     -------------------------------------------------------------------------
     -- Variables joueur
     -------------------------------------------------------------------------
-
+    
     -- Poste du joueur :
     -- attaquant, milieu, défenseur, gardien
     -- permet d'avoir une information joueur sans mémoriser son identité
