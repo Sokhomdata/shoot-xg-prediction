@@ -1,9 +1,9 @@
 SELECT
     JSON_VALUE(competition_json, '$.competition_gender') AS competition_gender,
-    JSON_VALUE(competition_json, '$.competition_id') AS competition_id,
-    JSON_VALUE(competition_json, '$.competition_international') AS competition_international,
+    SAFE_CAST(JSON_VALUE(competition_json, '$.competition_id') AS INT64)AS competition_id,
+    SAFE_CAST(JSON_VALUE(competition_json, '$.competition_international') AS BOOL) AS competition_international,
     JSON_VALUE(competition_json, '$.competition_name') AS competition_name,
-    JSON_VALUE(competition_json, '$.competition_youth') AS competition_youth,
+    SAFE_CAST(JSON_VALUE(competition_json, '$.competition_youth') AS BOOL) AS competition_youth,
     JSON_VALUE(competition_json, '$.country_name') AS country_name,
     JSON_VALUE(competition_json, '$.match_available') AS match_available,
     JSON_VALUE(competition_json, '$.match_available_360') AS match_available_360,
