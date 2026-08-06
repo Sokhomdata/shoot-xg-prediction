@@ -34,7 +34,7 @@ SELECT
     SAFE_CAST(JSON_VALUE(event_json, '$.pass.end_location[1]') AS FLOAT64) AS pass_end_y,
     SAFE_CAST(JSON_VALUE(event_json, '$.pass.recipient.id') AS INT64) AS recipient_id,
     JSON_VALUE(event_json, '$.pass.recipient.name') AS recipient_name,
-    SAFE_CAST(JSON_VALUE(event_json, '$.pass.body_part.id') AS INT64) AS body_part_id,
+    SAFE_CAST(JSON_VALUE(event_json, '$.shot.body_part.id') AS INT64) AS body_part_id,
     JSON_VALUE(event_json, '$.pass.body_part.name') AS body_part_name,
     SAFE_CAST(JSON_VALUE(event_json, '$.pass.height.id') AS INT64) AS pass_height_id,
     JSON_VALUE(event_json, '$.pass.height.name') AS pass_height_name,
