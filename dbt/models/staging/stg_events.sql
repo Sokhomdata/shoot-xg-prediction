@@ -46,4 +46,4 @@ SELECT
     SAFE_CAST(JSON_VALUE(event_json, '$.shot.statsbomb_xg') AS FLOAT64) AS xg,
     SAFE_CAST(JSON_VALUE(event_json, '$.under_pressure') AS BOOL) AS under_pressure,
     SAFE_CAST(JSON_VALUE(event_json, '$.shot.first_time') AS BOOL) AS first_time
-FROM {{ source('statsbomb_data', 'events_raw') }}
+FROM {{ source('statsbomb_data', 'raw_events') }}
