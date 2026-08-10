@@ -34,4 +34,4 @@ SELECT
     SAFE_CAST(JSON_VALUE(match_json, '$.last_updated') AS TIMESTAMP) AS last_updated,
     SAFE_CAST(JSON_VALUE(match_json, '$.last_updated_360') AS TIMESTAMP) AS last_updated_360
 
-FROM {{ source('statsbomb_data', 'matches_test') }}
+FROM {{ source('statsbomb_data', 'raw_matches') }}

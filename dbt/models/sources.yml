@@ -4,11 +4,11 @@ sources:
   - name: statsbomb_data
     description: "Les données brutes de Statsbomb."
     tables:
-      - name: competitions_raw
+      - name: raw_competitions
         description: "Table des competitions brute."
-      - name: lineups_raw
+      - name: raw_lineups
         description: "Table des compositions des matchs brute"
-      - name: matches_test
+      - name: raw_matches
         description: "Table des matches brute par saison"
-      - name: events_raw
+      - name: raw_events
         description: "Table de tous les evenements présent dans chaque matchs"

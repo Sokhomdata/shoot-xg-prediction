@@ -12,7 +12,7 @@ SELECT
     JSON_VALUE(position, '$.from_period') AS from_period,
     JSON_VALUE(position, '$.to_period') AS to_period
 
-FROM {{ source('statsbomb_data', 'lineups_raw') }}
+FROM {{ source('statsbomb_data', 'raw_lineups') }}
 
 CROSS JOIN UNNEST(
     JSON_QUERY_ARRAY(lineup_json, '$.lineup')
