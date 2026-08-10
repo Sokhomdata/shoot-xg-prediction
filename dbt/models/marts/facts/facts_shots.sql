@@ -5,8 +5,8 @@ SELECT
     player_id as striker_id,
     team_id,
 
-    x,
-    y,
+    x as shot_x,
+    y as shot_y,
 
     minute,
     second,
