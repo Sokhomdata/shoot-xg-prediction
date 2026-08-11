@@ -23,7 +23,7 @@ SELECT
     SAFE_CAST(JSON_VALUE(event_json, '$.type.id') AS INT64) AS type_id,
     JSON_VALUE(event_json, '$.type.name') AS type_name,
     SAFE_CAST(JSON_VALUE(event_json, '$.shot.outcome.id') AS INT64) AS outcome_id,
-    JSON_VALUE(event_json, '$.shot.outcome.name') AS outcome_name,
+    JSON_VALUE(event_json, '$.shot.outcome.name') = 'Goal' AS outcome_name,
     SAFE_CAST(JSON_VALUE(event_json, '$.shot.technique.id') AS INT64) AS technique_id,
     JSON_VALUE(event_json, '$.shot.technique.name') AS technique_name,
     SAFE_CAST(JSON_VALUE(event_json, '$.shot.type.id') AS INT64) AS shot_type_id,
