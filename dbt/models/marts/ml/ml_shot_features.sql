@@ -91,7 +91,7 @@ SELECT
     -- Variable cible
     -------------------------------------------------------------------------
 
-s.outcome_name AS goal
+    is_goal
 
 FROM shots s
 LEFT JOIN matches m
