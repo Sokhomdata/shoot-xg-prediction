@@ -5,6 +5,7 @@
 select
     match_id,
     competition_id,
+    season_id,
     match_date,
     kick_off,
     home_team_id,
